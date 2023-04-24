@@ -1,0 +1,31 @@
+{% extends 'GoldCode/layout.html' %}
+{% load static %}
+
+
+
+
+
+{% block title%}Главная страница{% endblock %}
+
+{% block content%}
+    <div class="features">
+        <h1>Общее кол-во выгрузок: {{ shipments.count }}</h1>
+        <div class="all">
+        <div class="input">
+        <label for="start">Период:</label>
+        <input type="date" id="start" name="trip-start" value="2022-04-22" min="2020-01-01">
+        </div>
+        {% for shipment in shipments %}
+        <div class="alert alert-warning">
+        <h3>№{{ shipment.number_of_shipment }}  {{shipment.time}}{{ MEDIA_URL }} <img src="{{ shipment.img.url }}"  alt="{{ shipment.img }}" width="104" height="104"></h3>
+
+{#        <div class="hidden">#}
+{#        <img src="{{ shipment.img.url }}"  alt="{{ shipment.img }}" width="104" height="104">#}
+{#        </div>#}
+        </div>
+        {% endfor %}
+        </div>
+{#        <img src='{% static  "GoldCode/img/result/img_2_id_68_sec.jpg"%}'/>#}
+{#        <button class="btn btn-warning"> На страницу</button>#}
+    </div>
+{% endblock %}
